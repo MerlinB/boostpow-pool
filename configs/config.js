@@ -90,7 +90,7 @@ module.exports = {
   /* Redis instance of where to store global portal data such as historical stats, proxy states,
      ect.. */
   redis: {
-    host: "127.0.0.1",
+    host: "redis",
     port: 6379
   },
 
