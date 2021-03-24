@@ -2,6 +2,8 @@ version: "3"
 services:
   redis:
     image: redis
+    expose:
+      - "6379"
     command: ["redis-server", "--appendonly", "yes"]
     hostname: redis
     volumes:
@@ -13,12 +15,18 @@ services:
       - "17117:17117" # nomp cli
       - "80:80" # web interface
       - "3333:3333" # sha256 pool
+      - "3032:3032" # boostPoW pool
     volumes:
       - ./configs/config.js:/code/config.js
       - ./configs/pool_configs:/code/pool_configs
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - NODE_ADDRESS=${NODE_ADDRESS}
+      - NODE_RPC_HOST=${NODE_RPC_HOST}
+      - NODE_RPC_PORT=${NODE_RPC_PORT}
+      - NODE_RPC_USER=${NODE_RPC_USER}
+      - NODE_RPC_PW=${NODE_RPC_PW}
 
     depends_on:
       - redis
