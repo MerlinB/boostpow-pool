@@ -22,7 +22,7 @@ if (!fs.existsSync('config.js')){
     return;
 }
 
-var portalConfig = require('config.js');
+var portalConfig = require('./config.js');
 var poolConfigs;
 
 
@@ -99,7 +99,7 @@ var buildPoolConfigs = function(){
     /* Get filenames of pool config json files that are enabled */
     fs.readdirSync(configDir).forEach(function(file){
         if (!fs.existsSync(configDir + file) || path.extname(configDir + file) !== '.js') return;
-        var poolOptions = require(configDir + file);
+        var poolOptions = require("./" + configDir + file);
         if (!poolOptions.enabled) return;
         poolOptions.fileName = file;
         poolConfigFiles.push(poolOptions);
