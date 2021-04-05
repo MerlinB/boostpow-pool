@@ -1,3 +1,5 @@
+_Unfinished WIP_
+
 # BoostPoW mining pool and portal
 
 Run with `docker-compose up`
